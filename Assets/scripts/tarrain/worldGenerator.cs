@@ -7,6 +7,10 @@ public class worldGenerator : MonoBehaviour
 {
     // Deklaracja czterowymiarowej tablicy
     int[,,] chunkData = new int[16, 16, 256];
+    Mesh mesh = new Mesh();
+    Vector3[] vertices = new Vector3[256];
+    Vector2[] uv = new Vector2[256];
+    int[] triangles = new int[384];
 
     // Przyk³adowe u¿ycie tablicy - ustawienie wartoœci dla konkretnego bloku
     private int xPos, yPos, zPos, idBlock, localHeight;
@@ -26,7 +30,7 @@ public class worldGenerator : MonoBehaviour
                     yPos = y;
                     chunkData[xPos, yPos, zPos] = 1;
                     Vector3 spawnPosition = transform.position + new Vector3(xPos - 8, yPos, zPos - 8);
-                    Instantiate(blockPrefab, spawnPosition, Quaternion.identity);
+                    
                 }
 
             }
